@@ -1,8 +1,12 @@
 docker rm node-app-image -fv   (remove with volume)
 docker image rm 7becb8aebd53
 
-docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d      (Dev Run command)
-docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v    (Dev Run command)
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build     (Dev Run command)
+docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v    (Dev down command)
+
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build     (Prod Run command)
+docker compose -f docker-compose.yml -f docker-compose.prod.yml down -v    (Prod down command)
+
 docker logs containsername  
 
 
