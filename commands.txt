@@ -1,8 +1,8 @@
 docker rm node-app-image -fv   (remove with volume)
 docker image rm 7becb8aebd53
 
-docker-compose up -d --build     (Run command)
-docker-compose down -v  (remove container with voume)
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d      (Dev Run command)
+docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v    (Dev Run command)
 docker logs containsername  
 
 
@@ -13,6 +13,9 @@ docker logs containsername
 
 
 (No need to use below codes with docker-compose.yaml)
+
+docker-compose up -d --build     (Run command)
+docker-compose down -v  (remove container with voume)
 
 docker build -t node-app-image . (Image build)
 docker run -p 3000:3000 -d --name node-app-image node-app-image (Container build)
