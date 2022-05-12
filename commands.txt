@@ -7,6 +7,8 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v    (Dev d
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build     (Prod Run command)
 docker compose -f docker-compose.yml -f docker-compose.prod.yml down -v    (Prod down command)
 
+docker logs ctsc-microservice-app-sliit-node-app-1 -f
+
 docker logs containsername  
 
 
