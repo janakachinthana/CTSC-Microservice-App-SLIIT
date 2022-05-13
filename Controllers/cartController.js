@@ -71,7 +71,7 @@ exports.UpdateCartItem = (req, res, next) =>{
 }
 
 
-exports.UpdateCartItem = (req, res, next) =>{
+exports.DeleteCartItem = (req, res, next) =>{
 
     try {
         const cart = Cart.findByIdAndDelete(req.params.id)
