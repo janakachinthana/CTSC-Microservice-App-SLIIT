@@ -1,22 +1,12 @@
-const { default: mongoose } = require("mongoose");
-const mogoose = require("mongoose");
+const mongoose = require("mongoose");
 
-const cartSchema = new mongoose({
-    
-    userId: {
-        type: string,
-        require: [true, "userId required"]
-    },
-    productId: {
-        type: string,
-        require: [true, "productId required"]
-    },
-    count:{
-        type: int,
-        require: [true, "count required"]
-    }
 
-})
+const cartSchema = new mongoose.Schema({
+    code: { type: String, required: true, trim: true }, 
+    userId: { type: String, required: true, trim: true },
+    amount: { type: Number, required: true, trim: true }
+});
 
-const Cart = mogoose.model("Post", cartSchema);
+
+const Cart = mongoose.model("cart", cartSchema);
 module.exports = Cart;

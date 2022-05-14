@@ -12,7 +12,7 @@ exports.getAllCartItems = (req, res, next) =>{
         });
     } catch (e) {
         res.status(400).json({
-            status: "fail"
+            status: e
         });
     }
 }
@@ -40,7 +40,7 @@ exports.createCartItem = (req, res, next) =>{
         const cart = Cart.create(req.body)
 
         res.status(200).json({
-            status: "success",
+            status: "successs",
             data: cart
         });
     } catch (e) {
