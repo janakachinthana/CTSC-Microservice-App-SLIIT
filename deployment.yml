@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ctsc-deployment
+  name: ctscapp-deployment
   labels:
-    app: ctsc
+    app: ctscapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ctsc
+      app: ctscapp
   template:
     metadata:
       labels:
-        app: ctsc 
+        app: ctscapp 
     spec:
       containers:
-      - name: ctscserver
-        image: ctscsliitjanaka/ctsc:latest
+      - name: ctscappserver
+        image: ctscsliitjanaka/ctscapp:latest
         ports:
         - containerPort: 3000

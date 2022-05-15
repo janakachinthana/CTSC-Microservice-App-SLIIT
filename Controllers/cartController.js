@@ -5,9 +5,6 @@ const createCartItem = async (req, res, next) =>{
 
     if (req.body) {
 
-        const data = getAllCartItems();
-
-        console.log(data);
         const product = new Cart(req.body);
         product.save()
             .then(data => {
@@ -21,76 +18,47 @@ const createCartItem = async (req, res, next) =>{
 
 
 const getAllCartItems = async (req, res, next) =>{
+    console.log("test");
+        await Cart.find({}).populate('carts')
+            .then(data => {
+                res.status(200).send({ data: data });
+            })
+            .catch(error => {
+                res.status(500).send({ error: error.message });
+            });
 
-    await Cart.find({})
-    .then(data => {
-        res.status(200).send({ data: data });
-    })
-    .catch(error => {
-        res.status(500).send({ error: "error.message" });
-    });
 }
 
-exports.getCartItemsByUser = (req, res, next) =>{
-
-    try {
-        const carts = Cart.findById(req.params.id)
-
-        res.status(200).json({
-            status: "success",
-            results: carts.length,
-            data: carts
-        });
-    } catch (e) {
-        res.status(400).json({
-            status: "fail"
-        });
+const editCartItem = async (req, res, next) => {
+    if (req.params && req.params.id && req.body) {
+        const cart = new Cart(req.body);
+        console.log(cart);
+        await Cart.updateOne({ _id: req.params.id },{cart})
+            .then(response => {
+                res.status(200).send({ data: response })
+            }).catch(error => {
+                res.status(500).send({ error: error.messege })
+            })
     }
 }
 
 
-
-exports.UpdateCartItem = (req, res, next) =>{
-
-    try {
-        const carts = Cart.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true,
-        })
-
-        res.status(200).json({
-            status: "success",
-            data: carts
-        });
-    } catch (e) {
-        res.status(400).json({
-            status: "fail"
-        });
+const deleteCartItem = async (req, res, next) => {
+    console.log("test");
+    if (req.params && req.params.id) {
+        await Cart.deleteOne({ _id: req.params.id })
+            .then(response => {
+                res.status(200).send({ data: response })
+            }).catch(error => {
+                res.status(500).send({ error: error.messege })
+            })
     }
 }
-
-
-exports.DeleteCartItem = (req, res, next) =>{
-
-    try {
-        const cart = Cart.findByIdAndDelete(req.params.id)
-
-        res.status(200).json({
-            status: "success"
-            // ,
-            // data: carts
-        });
-    } catch (e) {
-        res.status(400).json({
-            status: "fail"
-        });
-    }
-}
-
-
 
 //export to use in another class
 module.exports = {
     createCartItem,
     getAllCartItems,
+    editCartItem,
+    deleteCartItem
 }

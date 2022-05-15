@@ -1,3 +1,14 @@
+docker build -t ctscsliitjanaka/ctscapp .
+docker run -d -p 3000:3000 ctscsliitjanaka/ctscapp
+docker rm -f <57eba543a830>
+
+(No need to use below codes with docker-compose.yaml)
+
+
+
+
+
+
 docker rm node-app-image -fv   (remove with volume)
 docker image rm 7becb8aebd53
 
@@ -10,15 +21,6 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml down -v    (Prod
 docker logs ctsc-microservice-app-sliit-node-app-1 -f
 
 docker logs containsername  
-
-
-
-
-
-
-
-
-(No need to use below codes with docker-compose.yaml)
 
 docker-compose up -d --build     (Run command)
 docker-compose down -v  (remove container with voume)

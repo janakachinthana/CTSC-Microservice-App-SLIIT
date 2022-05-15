@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.send('<h1>welcome</h1>');
 })
 
-//enable cors
+//enable cors sds
 app.use(cors());
 app.use(bodyParser.json());
 
