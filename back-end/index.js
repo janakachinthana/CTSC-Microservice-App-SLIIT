@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use('/cart', cartRoute);
 
 //run the server
-app.listen(4000, ()=>{
+app.listen(3000, ()=>{
     console.log("Server running at port 3000");
 });
 

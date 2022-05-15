@@ -4,6 +4,10 @@ const Cart = require("../Models/cart")
 const createCartItem = async (req, res, next) =>{
 
     if (req.body) {
+
+        const data = getAllCartItems();
+
+        console.log(data);
         const product = new Cart(req.body);
         product.save()
             .then(data => {
