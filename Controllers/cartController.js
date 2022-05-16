@@ -5,8 +5,8 @@ const createCartItem = async (req, res, next) =>{
 
     if (req.body) {
 
-        const product = new Cart(req.body);
-        product.save()
+        const cart = new Cart(req.body);
+        cart.save()
             .then(data => {
                 res.status(200).send({ data: data });
             })
@@ -32,7 +32,6 @@ const getAllCartItems = async (req, res, next) =>{
 const editCartItem = async (req, res, next) => {
     if (req.params && req.params.id && req.body) {
         const cart = new Cart(req.body);
-        console.log(cart);
         await Cart.updateOne({ _id: req.params.id },{cart})
             .then(response => {
                 res.status(200).send({ data: response })
