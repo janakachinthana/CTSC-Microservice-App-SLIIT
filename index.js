@@ -16,7 +16,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //set routing
-app.use('/cart', cartRoute);
+app.use('api/v1/cart', cartRoute);
 
 //run the server
 app.listen(3000, ()=>{
