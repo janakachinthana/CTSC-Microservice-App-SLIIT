@@ -12,6 +12,12 @@ router.put('/:id', cartController.editCartItem);
 
 router.delete('/:id', cartController.deleteCartItem);
 
+router.post('/userproduct/', cartController.getCartItemByUserId);
+
+router.get('/userproducts/:id', cartController.getCartItemsByUserId);
+
+
+
 module.exports = router;
 
 
