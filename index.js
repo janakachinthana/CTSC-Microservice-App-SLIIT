@@ -8,7 +8,7 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>#GOTAGOHOME</h1>');
+    res.send('<h1>#Zoys Gonek#</h1>');
 })
 
 //enable cors sds
